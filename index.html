@@ -5,8 +5,8 @@
     <meta charset='utf8'>
     <meta name='viewport' content='width=device-width'>
     <title>spectre-colors</title>
-    <link rel="stylesheet" href="./dist/default/spectre.min.css" />
-    <link rel="stylesheet" href="./dist/default/spectre-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/h416/spectre-colors/dist/default/spectre.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/h416/spectre-colors/dist/default/spectre-icons.min.css" />
     <script type="text/javascript">
         function addStyle(path) {
             var link = document.createElement('link');
@@ -15,10 +15,14 @@
             link.setAttribute('href', path);
             document.getElementsByTagName('head')[0].appendChild(link);
         }
+        function getBaseUrl(name) {
+            return `https://cdn.jsdelivr.net/gh/h416/spectre-colors/dist/${name}`;
+        }
         function loadCss(name) {
-            var paths = []
-            paths.push(`./dist/${name}/spectre.min.css`);
-            paths.push(`./dist/${name}/spectre-icons.min.css`);
+            var paths = [];
+            var base = getBaseUrl(name);
+            paths.push(`${base}/spectre.min.css`);
+            paths.push(`${base}/spectre-icons.min.css`);
             paths.forEach((path) => {
                 addStyle(path);
             });
@@ -26,7 +30,7 @@
             updateSubTitle(name);
         }
         function updateCode(name) {
-            var base = `https://cdn.jsdelivr.net/gh/h416/spectre-colors/dist/${name}`;
+            var base = getBaseUrl(name);
             var files = ["spectre.min.css", "spectre-exp.min.css", "spectre-icons.min.css"];
             var code = "";
             files.forEach((file) => {
