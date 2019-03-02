@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>spectre-colors</title>
+    <link rel="stylesheet" href="./dist/default/spectre.min.css" />
+    <link rel="stylesheet" href="./dist/default/spectre-icons.min.css" />
+    <script type="text/javascript">
+        function addStyle(path) {
+            var link = document.createElement('link');
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('type', 'text/css');
+            link.setAttribute('href', path);
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        function loadCss(name) {
+            var paths = []
+            paths.push(`./dist/${name}/spectre.min.css`);
+            paths.push(`./dist/${name}/spectre-icons.min.css`);
+            paths.forEach((path) => {
+                addStyle(path);
+            });
+            updateCode(name);
+            updateSubTitle(name);
+        }
+        function updateCode(name) {
+            var base = `https://cdn.jsdelivr.net/gh/h416/spectre-colors/dist/${name}`;
+            var files = ["spectre.min.css", "spectre-exp.min.css", "spectre-icons.min.css"];
+            var code = "";
+            files.forEach((file) => {
+                code += `<link rel="stylesheet" href="${base}/${file}" />\n`
+            });
+            document.getElementById("code").textContent = code;
+        }
+        function updateSubTitle(name) {
+            document.getElementById("subtitle").textContent = name;
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="columns">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-3 col-sm-12">
+                        <label class="form-label">Color:</label>
+                    </div>
+                    <div class="col-9 col-sm-12">
+                        <select class="form-select" onchange="loadCss(this.options[this.options.selectedIndex].text)">
+                            <option>default</option>
+                            <option>red</option>
+                            <option>pink</option>
+                            <option>purple</option>
+                            <option>deep_purple</option>
+                            <option>indigo</option>
+                            <option>blue</option>
+                            <option>light_blue</option>
+                            <option>cyan</option>
+                            <option>teal</option>
+                            <option>green</option>
+                            <option>light_green</option>
+                            <option>lime</option>
+                            <option>yellow</option>
+                            <option>amber</option>
+                            <option>orange</option>
+                            <option>deep_orange</option>
+                            <option>brown</option>
+                            <option>grey</option>
+                            <option>blue_grey</option>
+                        </select>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <pre class="code" data-lang="HTML"><code id="code"></code></pre>
+            </div>
+        </div>
+
+
+
+        <div class="columns">
+
+            <div class="column">
+
+                <div class="panel">
+                    <div class="panel-header text-center">
+                        <figure class="avatar avatar-lg">S</figure>
+                        <div class="panel-title h5 mt-10">Color Preview</div>
+                        <div class="panel-subtitle" id="subtitle">sub title</div>
+                    </div>
+                    <nav class="panel-nav">
+                        <ul class="tab tab-block">
+                            <li class="tab-item active"><a href="#panels">Profile</a></li>
+                            <li class="tab-item"><a href="#panels">Files</a></li>
+                            <li class="tab-item"><a href="#panels">Tasks</a></li>
+                        </ul>
+                    </nav>
+                    <div class="panel-body">
+                        <div class="tile tile-centered">
+                            <div class="tile-content">
+                                <div class="tile-title text-bold">E-mail</div>
+                                <div class="tile-subtitle">sample@example.com</div>
+                            </div>
+                            <div class="tile-action">
+                                <button class="btn btn-link btn-action btn-lg tooltip tooltip-left"
+                                    data-tooltip="Edit E-mail"><i class="icon icon-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="tile tile-centered">
+                            <div class="tile-content">
+                                <div class="tile-title text-bold">Skype</div>
+                                <div class="tile-subtitle">sample</div>
+                            </div>
+                            <div class="tile-action">
+                                <button class="btn btn-link btn-action btn-lg"><i class="icon icon-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="tile tile-centered">
+                            <div class="tile-content">
+                                <div class="tile-title text-bold">Location</div>
+                                <div class="tile-subtitle">sample</div>
+                            </div>
+                            <div class="tile-action">
+                                <button class="btn btn-link btn-action btn-lg"><i class="icon icon-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-primary btn-block">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
