@@ -3,7 +3,7 @@
 rm -rf dist
 mkdir -p dist
 
-VERSION="0.5.8"
+VERSION="0.5.9"
 folder="spectre-${VERSION}"
 if [ ! -d ${folder} ]; then
     filename="v${VERSION}.tar.gz"
